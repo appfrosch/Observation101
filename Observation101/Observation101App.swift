@@ -30,6 +30,17 @@ struct ContentView: View {
 }
 
 //MARK: ViewModel Layer
+import Observation //required to use the new, well, observation stuff
+
+@Observable final class ItemsViewModel {
+    var items: [Item] //not providing a default value here (despite having an initialiser!) results in the error message `@Observable requires property 'items' to have an initial value (from macro 'Observable')`
+    
+    init(
+        items: [Item] = .init()
+    ) {
+        self.items = items
+    }
+}
 
 //MARK: Model Layer
 struct Item: Identifiable {
