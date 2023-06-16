@@ -74,6 +74,14 @@ import Observation //required to use the new, well, observation stuff
     }
 }
 
+@Observable final class ItemViewModel {
+    var item: Item = .init()
+    
+    init(item: Item = Item(title: "New Item")) {
+        self.item = item
+    }
+}
+
 //MARK: Model Layer
 struct Item: Identifiable {
     let id: UUID
