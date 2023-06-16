@@ -30,9 +30,7 @@ struct ContentView: View {
             List {
                 ForEach($itemsViewModel.items) { $item in
                     NavigationLink {
-                        Form {
-                            TextField("Title", text: $item.title) //beware: with Xcode 15.0 beta 1 I ran into an issue where the hw keyboard would not work in preview nor simulator–the sw keyboard in the simulator works though
-                        }
+                        ItemDetailView(item: item)
                     } label: {
                         Text(item.title)
                     }
@@ -42,8 +40,22 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+#Preview("ContentView") {
     ContentView()
+}
+
+struct ItemDetailView: View {
+    var item: Item
+    
+    var body: some View {
+        Form {
+            Text(item.title)
+        }
+    }
+}
+
+#Preview("ItemDetailView") {
+    ItemDetailView(item: Item())
 }
 
 //MARK: ViewModel Layer
