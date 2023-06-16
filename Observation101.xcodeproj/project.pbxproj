@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CD8167272A3C6087005EBD26 /* Observation101App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8167262A3C6087005EBD26 /* Observation101App.swift */; };
-		CD8167292A3C6087005EBD26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8167282A3C6087005EBD26 /* ContentView.swift */; };
 		CD81672B2A3C6088005EBD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD81672A2A3C6088005EBD26 /* Assets.xcassets */; };
 		CD81672E2A3C6088005EBD26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD81672D2A3C6088005EBD26 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		CD8167232A3C6087005EBD26 /* Observation101.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Observation101.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8167262A3C6087005EBD26 /* Observation101App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation101App.swift; sourceTree = "<group>"; };
-		CD8167282A3C6087005EBD26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD81672A2A3C6088005EBD26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD81672D2A3C6088005EBD26 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD8167342A3C6167005EBD26 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				CD8167262A3C6087005EBD26 /* Observation101App.swift */,
-				CD8167282A3C6087005EBD26 /* ContentView.swift */,
 				CD81672A2A3C6088005EBD26 /* Assets.xcassets */,
 				CD81672C2A3C6088005EBD26 /* Preview Content */,
 			);
@@ -139,7 +136,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD8167292A3C6087005EBD26 /* ContentView.swift in Sources */,
 				CD8167272A3C6087005EBD26 /* Observation101App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
