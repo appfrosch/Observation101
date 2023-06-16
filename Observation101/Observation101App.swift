@@ -18,14 +18,25 @@ struct Observation101App: App {
 
 //MARK: View Layer
 struct ContentView: View {
+    @State private var itemsViewModel = ItemsViewModel(
+        items: [
+            Item(title: "First item"),
+            Item(title: "Second item"),
+        ]
+    )
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(itemsViewModel.items) {item in
+                    NavigationLink {
+                        Text(item.title)
+                    } label: {
+                        Text(item.title)
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
@@ -50,4 +61,12 @@ import Observation //required to use the new, well, observation stuff
 struct Item: Identifiable {
     let id: UUID
     var title: String
+    
+    init(
+        id: UUID = .init(),
+        title: String = "New Item"
+    ) {
+        self.id = id
+        self.title = title
+    }
 }
