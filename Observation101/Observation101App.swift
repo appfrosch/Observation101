@@ -16,6 +16,7 @@ struct Observation101App: App {
     }
 }
 
+//MARK: View Layer
 struct ContentView: View {
     var body: some View {
         VStack {
@@ -27,3 +28,7 @@ struct ContentView: View {
         .padding()
     }
 }
+
+//MARK: ViewModel Layer
+
+//MARK: Model Layer
