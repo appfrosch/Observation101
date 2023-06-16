@@ -45,7 +45,7 @@ struct ContentView: View {
 }
 
 struct ItemDetailView: View {
-    var item: Item
+    @Bindable var item: Item // trying the new `@Bindable` annotation leads to the error `'init(wrappedValue:)' is unavailable: The wrapped value must be an object that conforms to Observable`
     
     var body: some View {
         Form {
