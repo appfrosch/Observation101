@@ -50,7 +50,7 @@ struct ItemDetailView: View {
     
     var body: some View {
         Form {
-            Text(item.title)
+            TextField("Title", text: $item.title)
         }
     }
 }
