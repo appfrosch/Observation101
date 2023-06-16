@@ -28,9 +28,11 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(itemsViewModel.items) {item in
+                ForEach($itemsViewModel.items) { $item in
                     NavigationLink {
-                        Text(item.title)
+                        Form {
+                            TextField("Title", text: $item.title) //beware: with Xcode 15.0 beta 1 I ran into an issue where the hw keyboard would not work in preview nor simulator–the sw keyboard in the simulator works though
+                        }
                     } label: {
                         Text(item.title)
                     }
