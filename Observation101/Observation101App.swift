@@ -19,20 +19,20 @@ struct Observation101App: App {
 //MARK: View Layer
 struct ContentView: View {
     @State private var itemsViewModel = ItemsViewModel(
-        items: [
-            Item(title: "First item"),
-            Item(title: "Second item"),
+        itemViewModels: [
+            ItemViewModel(item: Item(title: "First item")),
+            ItemViewModel(item: Item(title: "Second item")),
         ]
     )
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach($itemsViewModel.items) { $item in
+                ForEach(itemsViewModel.itemViewModels) { itemViewModel in
                     NavigationLink {
-                        ItemDetailView(item: $item)
+                        ItemDetailView(itemViewModel: itemViewModel)
                     } label: {
-                        Text(item.title)
+                        Text(itemViewModel.item.title)
                     }
                 }
             }
@@ -45,19 +45,18 @@ struct ContentView: View {
 }
 
 struct ItemDetailView: View {
-//    @Bindable var item: Item // trying the new `@Bindable` annotation leads to the error `'init(wrappedValue:)' is unavailable: The wrapped value must be an object that conforms to Observable`
-    @Binding var item: Item // working with a `@Binding` works here–is this still best practice?
+    @Bindable var itemViewModel: ItemViewModel // @Bindable works now as it is instantiating an @Observable viewmodel
     
     var body: some View {
         Form {
-            TextField("Title", text: $item.title)
+            TextField("Title", text: $itemViewModel.item.title)
         }
     }
 }
 
 #Preview("ItemDetailView") {
     ItemDetailView(
-        item: .constant(Item())
+        itemViewModel: (ItemViewModel(item: Item()))
     )
 }
 
@@ -65,16 +64,17 @@ struct ItemDetailView: View {
 import Observation //required to use the new, well, observation stuff
 
 @Observable final class ItemsViewModel {
-    var items: [Item] = .init() //not providing a default value here (despite having an initialiser!) results in the error message `@Observable requires property 'items' to have an initial value (from macro 'Observable')`
+    var itemViewModels: [ItemViewModel] = .init() //not providing a default value here (despite having an initialiser!) results in the error message `@Observable requires property 'items' to have an initial value (from macro 'Observable')`
     
     init(
-        items: [Item] = .init()
+        itemViewModels: [ItemViewModel] = .init()
     ) {
-        self.items = items
+        self.itemViewModels = itemViewModels
     }
 }
 
-@Observable final class ItemViewModel {
+@Observable final class ItemViewModel: Identifiable {
+    var id: UUID { item.id }
     var item: Item = .init()
     
     init(item: Item = Item(title: "New Item")) {
