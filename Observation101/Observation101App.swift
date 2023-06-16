@@ -29,6 +29,10 @@ struct ContentView: View {
     }
 }
 
+#Preview {
+    ContentView()
+}
+
 //MARK: ViewModel Layer
 import Observation //required to use the new, well, observation stuff
 
