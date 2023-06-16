@@ -32,3 +32,7 @@ struct ContentView: View {
 //MARK: ViewModel Layer
 
 //MARK: Model Layer
+struct Item: Identifiable {
+    let id: UUID
+    var title: String
+}
