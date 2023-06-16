@@ -30,7 +30,7 @@ struct ContentView: View {
             List {
                 ForEach($itemsViewModel.items) { $item in
                     NavigationLink {
-                        ItemDetailView(item: item)
+                        ItemDetailView(item: $item)
                     } label: {
                         Text(item.title)
                     }
@@ -45,7 +45,8 @@ struct ContentView: View {
 }
 
 struct ItemDetailView: View {
-    @Bindable var item: Item // trying the new `@Bindable` annotation leads to the error `'init(wrappedValue:)' is unavailable: The wrapped value must be an object that conforms to Observable`
+//    @Bindable var item: Item // trying the new `@Bindable` annotation leads to the error `'init(wrappedValue:)' is unavailable: The wrapped value must be an object that conforms to Observable`
+    @Binding var item: Item // working with a `@Binding` works here–is this still best practice?
     
     var body: some View {
         Form {
@@ -55,7 +56,9 @@ struct ItemDetailView: View {
 }
 
 #Preview("ItemDetailView") {
-    ItemDetailView(item: Item())
+    ItemDetailView(
+        item: .constant(Item())
+    )
 }
 
 //MARK: ViewModel Layer
